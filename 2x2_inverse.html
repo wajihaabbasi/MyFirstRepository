@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name ="viewport" content ="width=device-width, initial-scale=1.0">
+        <title>Inverse Your 2x2 Matrix</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+    </head>
+    <body>
+        <h1>Inverse Your 2x2 Matrix</h1>
+        <form id="matrixForm" class="mb-3">
+
+        <!--taking input from user for element 'a'-->
+            <div class ="mb-3"> 
+                <label for="a" class="form-label">a:</label>
+                <input type="number" id="a" name="a" class="form-control">
+            </div>
+           
+        <!--taking input from user for element 'b'-->
+           <div class="mb-3">
+            <label for="b" class="form-label">b:</label>
+            <input type="number" id="b" name="b" class="form-control">
+           </div>
+
+           <!--taking input from user for element 'c'-->
+           <div class="mb-3"> 
+            <label for="c" class="form-label">c:</label>
+            <input type="number" id="c" name="c" class="form-control">
+           </div>
+
+           <!--taking input from user for element 'd'-->
+           <div class="mb-3">
+            <label for="d" class="form-label">d:</label>
+            <input type="number" id="d" name="d" class="form-control">
+           </div>
+         <!--interactive button to perform inverse function-->   
+            <button type="button" class="btn btn-primary" onclick="calculateInverse()"> Calculate Inverse </button>
+        </form>
+     <!--To display the result-->
+     <div id="result"></div>
+    </div>
+
+       <!-- JavaScript function to check invertability then calculate and print the inverse of the matrix -->
+    <script>
+        function calculateInverse() {
+            // Get the values from the input fields and convert them to floating-point numbers
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const d = parseFloat(document.getElementById('d').value);
+
+            // calculate the determinant
+            const determinant = a * d - b * c;
+
+            // check if determinant is 0; not invertable 
+            if (determinant === 0) {
+                console.log('The matrix is not invertible.');
+             } 
+            else {
+                // calculating the inverse matrix
+                const invA = d / determinant;
+                const invB = -b / determinant;
+                const invC = -c / determinant;
+                const invD = a / determinant;
+
+                // printing the inverse matrix
+                console.log('The inverse matrix is:');
+                console.log(`[${invA}, ${invB}]`);
+                console.log(`[${invC}, ${invD}]`);
+            }
+        }
+    </script>  
+    </body>
+</html>
